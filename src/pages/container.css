@@ -1,0 +1,83 @@
+/* General Container */
+.subscription-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  /* Card Grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  
+  /* Subscription Card */
+  .subscription-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1.5rem;
+  }
+  
+  .subscription-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Heading */
+  .subscription-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  /* Price and Duration */
+  .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #27ae60;
+    margin: 0.5rem 0;
+  }
+  
+  .duration {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Button */
+  .subscribe-btn {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .subscribe-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .subscription-card p {
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+  /* Adding space between features */
+  .subscription-card p strong {
+    color: #333;
+  }
+  

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import SubscriptionSelection from './SubscriptionSelection';
 import SubscriptionUpgrade from './SubscriptionUpgrade';
 import SubscriptionCancellation from './SubscriptionCancellation';
+import AddSubscriptionPlan from './AddSubscriptionPlan'; // Import AddSubscriptionPlan component
+
 import './Subscription.css'; // Importing the CSS for styling
 
 const Subscription = () => {
@@ -15,6 +17,8 @@ const Subscription = () => {
         return <SubscriptionUpgrade />;
       case 'cancellation':
         return <SubscriptionCancellation />;
+      case 'add':
+        return <AddSubscriptionPlan />; // Render AddSubscriptionPlan when the tab is active
       default:
         return <SubscriptionSelection />;
     }
@@ -43,6 +47,12 @@ const Subscription = () => {
             className={`sidebar-button ${activeTab === 'cancellation' ? 'active' : ''}`}
           >
             Subscription Cancellations
+          </button>
+          <button
+            onClick={() => setActiveTab('add')}
+            className={`sidebar-button ${activeTab === 'add' ? 'active' : ''}`}
+          >
+            Add Subscription Plan
           </button>
         </div>
 

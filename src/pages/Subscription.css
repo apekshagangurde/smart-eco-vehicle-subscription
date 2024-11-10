@@ -1,128 +1,91 @@
-/* Global Styles */
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f9fafb;
-}
-
-/* Main Subscription Container */
+/* Subscription.css */
 .subscription {
-  background-color: #f9fafb;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
+  font-family: Arial, sans-serif;
+  padding: 20px;
 }
 
 .subscription-title {
-  font-size: 3rem;
-  color: #333;
-  margin-bottom: 40px;
-  font-weight: 600;
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-/* Main Layout Container */
 .subscription-container {
   display: flex;
-  width: 100%;
-  max-width: 1400px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Sidebar Styling */
 .subscription-sidebar {
-  width: 250px;
-  background: linear-gradient(135deg, #4CAF50, #45a049);
+  width: 200px;
+  background-color: #2c3e50;
+  padding: 20px;
+  border-radius: 8px;
+  margin-right: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 20px;
-  box-shadow: 2px 0px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 8px 0 0 8px;
-}
-
-.sidebar-button {
-  background-color: transparent;
-  color: #fff;
-  border: none;
-  text-align: left;
-  padding: 18px;
-  font-size: 1.2rem;
-  margin: 12px 0;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-}
-
-.sidebar-button:hover {
-  background-color: #3e8e41;
-  transform: scale(1.05);
-}
-
-.sidebar-button.active {
-  background-color: #2e7d32;
-  font-weight: bold;
-}
-
-.icon {
-  margin-right: 12px;
-  font-size: 1.5rem;
-}
-
-/* Content Styling */
-.subscription-content {
-  flex-grow: 1;
-  background-color: #fff;
-  padding: 40px;
-  border-left: 2px solid #f1f1f1;
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.05);
-  border-radius: 0 8px 8px 0;
-}
-
-.subscription-selection h2, .subscription-upgrade h2, .subscription-cancellation h2 {
-  color: #333;
-  font-size: 2.5rem;
-  margin-bottom: 25px;
-}
-
-.subscription-selection .plans, .subscription-upgrade .upgrade-options {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.plan-card, .upgrade-card {
-  background: #f4f4f4;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 10px;
-  width: 30%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
   transition: transform 0.3s ease;
 }
 
-.plan-card:hover, .upgrade-card:hover {
-  transform: translateY(-10px);
+.subscription-sidebar:hover {
+  transform: translateX(-10px); /* Smooth hover effect for sidebar */
 }
 
-button {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
+.sidebar-button {
+  background-color: #34495e;
+  color: #ecf0f1;
   border: none;
-  border-radius: 6px;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  font-size: 1.2rem;
+  margin: 10px 0;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover {
-  background-color: #45a049;
+.sidebar-button i {
+  margin-right: 10px; /* Space for the icon */
+}
+
+.sidebar-button:hover {
+  background-color: #1abc9c; /* Green background on hover */
+  transform: scale(1.05); /* Button grows slightly on hover */
+}
+
+.sidebar-button.active {
+  background-color: #16a085; /* Active button has a different color */
+}
+
+.subscription-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ecf0f1;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.subscription-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.sidebar-button i {
+  font-size: 1.5rem; /* Size for icons */
+}
+
+/* Animating the active tab content */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.subscription-content {
+  animation: fadeIn 0.5s ease-in;
 }
