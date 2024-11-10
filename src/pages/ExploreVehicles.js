@@ -1,13 +1,7 @@
-// src/pages/ExploreVehicles.js
 import React from 'react';
-import VehicleFilter from '../components/VehicleFilter';
-import VehicleList from '../components/VehicleList';
 
-const ExploreVehicles = () => (
-   <div>
-      <VehicleFilter />
-      <VehicleList />
-   </div>
-);
+function ExploreVehicles() {
+  return <h1>Explore Vehicles Page</h1>;
+}
 
 export default ExploreVehicles;

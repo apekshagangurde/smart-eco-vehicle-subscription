@@ -1,0 +1,101 @@
+/* src/pages/VehicleDetails.css */
+
+.vehicle-details-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: linear-gradient(135deg, #4CAF50, #81C784); /* Green gradient */
+    color: white;
+    padding: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.vehicle-details-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.vehicle-details-header h1 {
+    font-size: 36px;
+    text-transform: uppercase;
+    animation: slideIn 1s ease-out;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.vehicle-details-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.vehicle-info, .vehicle-features, .vehicle-benefits {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    animation: fadeInUp 1s ease-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.vehicle-info h2, .vehicle-features h2, .vehicle-benefits h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #E8F5E9; /* Light green color for headings */
+}
+
+.vehicle-info p, .vehicle-features ul, .vehicle-benefits ul {
+    font-size: 18px;
+    color: #C8E6C9; /* Light green for the text */
+}
+
+.vehicle-features ul, .vehicle-benefits ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.vehicle-features li, .vehicle-benefits li {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.ai-assistant {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.ai-actions button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50; /* Green button color */
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.ai-actions button:hover {
+    transform: scale(1.1);
+    background-color: #b9c775; /* Darker green for hover */
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

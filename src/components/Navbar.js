@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="navbar-container">
         {/* Logo Section */}
         <Link to="/" className="navbar-logo">
-          <h1>Smart Eco</h1> {/* Replace with your logo or company name */}
+          <h1>Smart Eco</h1>
         </Link>
 
         {/* Links Section */}
@@ -20,7 +20,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/explore" className="nav-link">
+            <Link to="/explore" className="nav-link">  {/* Use '/explore' here to match App.js */}
               <FaCar /> Explore Vehicles
             </Link>
           </li>
