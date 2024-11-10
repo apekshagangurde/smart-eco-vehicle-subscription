@@ -1,28 +1,78 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import './AIAssistant.css';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import './AIAssistant.css'; // Import CSS for styling
 
 const AIAssistant = () => {
   const [isListening, setIsListening] = useState(false); // Track if recognition is running
   const [speechResult, setSpeechResult] = useState(''); // Store speech recognition result
+  const [response, setResponse] = useState(''); // Store AI response
   const [error, setError] = useState(''); // Track any errors
 
-  // Memoize the recognition object to ensure it doesn't get recreated on every render
+  // Memoize SpeechRecognition to avoid re-creating it on every render
   const recognition = useMemo(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognitionInstance = new SpeechRecognition();
     recognitionInstance.continuous = true; // Enable continuous recognition
     recognitionInstance.lang = 'en-US'; // Set language to English
     return recognitionInstance;
-  }, []); // Empty array ensures it runs only once, on mount
+  }, []); // Empty dependency array ensures recognition is only created once
 
+  // Process the command and generate an AI response dynamically
+  const processCommand = useCallback((command) => {
+    let responseText = '';
+    const lowerCaseCommand = command.toLowerCase();
+
+    // Example responses based on common commands
+    if (lowerCaseCommand.includes('hello') || lowerCaseCommand.includes('hi')) {
+      const greetings = ['Hello! How can I assist you today?', 'Hi there! What can I do for you?', 'Greetings! What’s up?'];
+      responseText = greetings[Math.floor(Math.random() * greetings.length)];
+    } 
+    else if (lowerCaseCommand.includes('weather')) {
+      const weatherResponses = [
+        'The weather is sunny and clear today.',
+        'It looks like it might rain later. Stay prepared!',
+        'The temperature is around 72°F with a light breeze.'
+      ];
+      responseText = weatherResponses[Math.floor(Math.random() * weatherResponses.length)];
+    } 
+    else if (lowerCaseCommand.includes('time')) {
+      const currentTime = new Date().toLocaleTimeString();
+      responseText = `The current time is ${currentTime}.`;
+    } 
+    else if (lowerCaseCommand.includes('how are you')) {
+      const moodResponses = [
+        'I’m doing great, thanks for asking!',
+        'I’m good! Ready to assist you.',
+        'I’m always happy to help you out!'
+      ];
+      responseText = moodResponses[Math.floor(Math.random() * moodResponses.length)];
+    } 
+    else if (lowerCaseCommand.includes('what is your name')) {
+      responseText = "I am your friendly AI Assistant!";
+    } 
+    else {
+      responseText = `Sorry, I didn’t understand "${command}". Can you repeat it? Or try something else like asking the time, weather, or just say hello!`;
+    }
+
+    setResponse(responseText);
+    respondToCommand(responseText);
+  }, []); // Memoize the processCommand function to avoid unnecessary re-renders
+
+  // Respond to the command using text-to-speech
+  const respondToCommand = (responseText) => {
+    const speechSynthesis = window.speechSynthesis;
+    const speech = new SpeechSynthesisUtterance(responseText);
+    speechSynthesis.speak(speech);
+  };
+
+  // Set up the recognition logic inside useEffect
   useEffect(() => {
-    // Handle speech recognition result
+    // This will handle the result when speech is recognized
     recognition.onresult = (event) => {
       const transcript = event.results[event.results.length - 1][0].transcript;
       setSpeechResult(transcript);
 
-      // Trigger response using Speech Synthesis
-      respondToCommand(transcript); // Call a function to respond to recognized speech
+      // Process the recognized command
+      processCommand(transcript);
     };
 
     // Handle error events
@@ -33,7 +83,7 @@ const AIAssistant = () => {
     return () => {
       recognition.stop(); // Clean up on unmount
     };
-  }, [recognition]);
+  }, [recognition, processCommand]); // Include processCommand in the dependency array
 
   const startListening = () => {
     if (!isListening) {
@@ -53,18 +103,6 @@ const AIAssistant = () => {
     }
   };
 
-  const respondToCommand = (command) => {
-    const speech = new SpeechSynthesisUtterance(); // Create a new speech synthesis instance
-    speech.text = `You said: ${command}`; // Set the speech text based on the recognized command
-
-    // Customize speech properties
-    speech.volume = 1; // Volume level from 0 to 1
-    speech.rate = 1; // Speed of speech (1 is normal)
-    speech.pitch = 1; // Pitch level (1 is normal)
-
-    window.speechSynthesis.speak(speech); // Speak the text
-  };
-
   return (
     <div className="container">
       <h1 className="title">AI Assistant</h1>
@@ -81,6 +119,7 @@ const AIAssistant = () => {
       </div>
 
       {speechResult && <p className="result"><strong>Recognized Speech: </strong>{speechResult}</p>}
+      {response && <p className="response"><strong>AI Response: </strong>{response}</p>}
       {error && <p className="error"><strong>Error: </strong>{error}</p>}
     </div>
   );

@@ -1,0 +1,94 @@
+/* Auth.css */
+.auth-container {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .input-icon {
+    margin-right: 10px;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .auth-message {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .auth-message.success {
+    color: green;
+  }
+  
+  .auth-message.error {
+    color: red;
+  }
+  
+  p {
+    text-align: center;
+  }
+  
+  a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  /* Make the Sign Out button red and position it at the top-right corner */
+.sign-out-button {
+    background-color: red;  /* Red background for the Sign Out button */
+    color: white;           /* White text color */
+    border: none;           /* Remove border */
+    padding: 10px 20px;      /* Add padding */
+    font-size: 16px;         /* Set font size */
+    cursor: pointer;        /* Show pointer cursor on hover */
+    position: absolute;      /* Position it absolutely within its parent */
+    top: 70px;               /* 10px from the top of the page */
+    right: 20px;             /* 20px from the right of the page */
+    border-radius: 5px;      /* Rounded corners */
+    transition: background-color 0.3s;  /* Smooth transition on hover */
+  }
+  
+  .sign-out-button:hover {
+    background-color: darkred; /* Darker red on hover */
+  }
+  
