@@ -1,7 +1,13 @@
 import React from 'react';
+import VehicleFilter from '../components/VehicleFilter';
 
-function ExploreVehicles() {
-  return <h1>Explore Vehicles Page</h1>;
-}
+const ExploreVehicles = () => {
+    return (
+        <div>
+            <h2>Explore Our Vehicles</h2>
+            <VehicleFilter />
+        </div>
+    );
+};
 
 export default ExploreVehicles;
