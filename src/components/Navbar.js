@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaCar, FaInfoCircle, FaUserCircle, FaSignInAlt } from 'react-icons/fa';
+import { FaHome, FaCar, FaInfoCircle, FaUserCircle, FaSignInAlt, FaRobot } from 'react-icons/fa';  // Import AI Assistant Icon
 import './Navbar.css'; // Optional, for additional custom styling
 
 const Navbar = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/explore" className="nav-link">  {/* Use '/explore' here to match App.js */}
+            <Link to="/explore" className="nav-link">
               <FaCar /> Explore Vehicles
             </Link>
           </li>
@@ -37,6 +37,11 @@ const Navbar = () => {
           <li>
             <Link to="/subscription" className="nav-link">
               <FaSignInAlt /> Subscription
+            </Link>
+          </li>
+          <li>
+            <Link to="/AIAssistant" className="nav-link">  {/* New AI Assistant link */}
+              <FaRobot /> AI Assistant
             </Link>
           </li>
         </ul>
