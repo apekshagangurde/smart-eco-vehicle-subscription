@@ -1,0 +1,95 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    background-color: #f4f7fb;
+    font-size: 16px;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .status {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .status.active {
+    color: green;
+  }
+  
+  .status.inactive {
+    color: #888;
+  }
+  
+  .button-container {
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .start-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .start-btn:disabled {
+    background-color: #ccc;
+  }
+  
+  .start-btn:hover:not(:disabled) {
+    background-color: #218838;
+  }
+  
+  .stop-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .stop-btn:disabled {
+    background-color: #ccc;
+  }
+  
+  .stop-btn:hover:not(:disabled) {
+    background-color: #c82333;
+  }
+  
+  .result {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  .error {
+    font-size: 1rem;
+    color: red;
+    margin-top: 10px;
+  }
+  

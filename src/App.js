@@ -6,11 +6,13 @@ import Footer from './components/Footer';  // Import Footer component
 import ExploreVehicles from './pages/ExploreVehicles';
 import Profile from './pages/Profile';
 import Subscription from './pages/Subscription';
+import HeroSection from './components/HeroSection';
+import AIAssistant from './components/AIAssistant';
 import About from './pages/About';
 
 
 function Home() {
-  return <home/>
+  return <div>Welcome to the Home Page</div>;  
 }
 
 
@@ -18,6 +20,8 @@ function App() {
   return (
     <Router>
       <Navbar /> {/* Navbar at the top */}
+      <HeroSection /> 
+      <AIAssistant />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
