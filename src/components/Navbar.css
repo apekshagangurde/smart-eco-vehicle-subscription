@@ -1,57 +1,88 @@
-/* Basic Navbar Styling */
+/* Navbar Styling */
 .navbar {
-    background-color: #333;
-    padding: 20px;
-    color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-logo h1 {
-    color: #fff;
-    font-size: 24px;
-    text-decoration: none;
-  }
-  
+  background-color: #2c3e50; /* Softer dark blue color */
+  padding: 15px 20px;
+  color: #ecf0f1; /* Lighter text color for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Styling */
+.navbar-logo h1 {
+  color: #ecf0f1;
+  font-size: 28px;
+  text-decoration: none;
+  margin: 0;
+  transition: color 0.3s;
+}
+
+.navbar-logo h1:hover {
+  color: #f39c12; /* Highlight color on hover */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav-link:hover {
+  color: #f39c12;
+  transform: translateY(-2px);
+}
+
+.nav-link svg {
+  font-size: 22px;
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
   .nav-links {
+    display: none;
+  }
+
+  .navbar-logo h1 {
+    font-size: 22px;
+  }
+}
+
+/* Add a hamburger menu for mobile view */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #ecf0f1;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
     display: flex;
-    gap: 20px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .nav-link:hover {
-    color: #f0a500; /* Highlight color on hover */
-  }
-  
-  .nav-link svg {
-    font-size: 20px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .nav-links {
-      display: none; /* Hide links on smaller screens */
-    }
-  
-    .navbar-logo h1 {
-      font-size: 20px;
-    }
-  
-    /* You can add a hamburger menu here for mobile devices */
-  }
-  
+ }
+}

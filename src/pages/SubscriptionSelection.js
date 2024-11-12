@@ -15,19 +15,24 @@ const SubscriptionSelection = () => {
   const [selectedSubscription, setSelectedSubscription] = useState(null);
   const [isCustomerCreated, setIsCustomerCreated] = useState(false);
   const [customerId, setCustomerId] = useState('');
-  const [isSubscriptionConfirmed, setIsSubscriptionConfirmed] = useState(false); // New state for subscription confirmation
+  const [isSubscriptionConfirmed, setIsSubscriptionConfirmed] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Fetch subscriptions from Firestore
   useEffect(() => {
     const fetchSubscriptions = async () => {
-      const querySnapshot = await getDocs(collection(firestore, 'subscriptions'));
-      const subscriptionList = [];
-      querySnapshot.forEach((doc) => {
-        subscriptionList.push({ id: doc.id, ...doc.data() });
-      });
-      setSubscriptions(subscriptionList);
+      try {
+        const querySnapshot = await getDocs(collection(firestore, 'subscriptions'));
+        const subscriptionList = [];
+        querySnapshot.forEach((doc) => {
+          subscriptionList.push({ id: doc.id, ...doc.data() });
+        });
+        setSubscriptions(subscriptionList);
+      } catch (error) {
+        setErrorMessage('Failed to load subscription plans.');
+        console.error(error);
+      }
     };
-
     fetchSubscriptions();
   }, []);
 
@@ -47,19 +52,31 @@ const SubscriptionSelection = () => {
 
   // Create Customer in Firebase
   const createCustomer = async () => {
-    try {
-      const docRef = await addDoc(collection(firestore, 'customers'), {
-        first_name: customerDetails.first_name,
-        last_name: customerDetails.last_name,
-        email: customerDetails.email,
-        phone_number: customerDetails.phone_number,
-        address: customerDetails.address,
-      });
-      setCustomerId(docRef.id); // Store the created customer ID
-      setIsCustomerCreated(true); // Mark that customer has been created
-    } catch (error) {
-      console.error('Error creating customer: ', error);
+    if (validateCustomerDetails()) {
+      try {
+        const docRef = await addDoc(collection(firestore, 'customers'), {
+          first_name: customerDetails.first_name,
+          last_name: customerDetails.last_name,
+          email: customerDetails.email,
+          phone_number: customerDetails.phone_number,
+          address: customerDetails.address,
+        });
+        setCustomerId(docRef.id); // Store the created customer ID
+        setIsCustomerCreated(true); // Mark that customer has been created
+        setErrorMessage(''); // Clear any previous errors
+      } catch (error) {
+        setErrorMessage('Error creating customer. Please try again.');
+        console.error('Error creating customer: ', error);
+      }
+    } else {
+      setErrorMessage('Please fill all customer details.');
     }
+  };
+
+  // Validate customer details before submission
+  const validateCustomerDetails = () => {
+    const { first_name, last_name, email, phone_number, address } = customerDetails;
+    return first_name && last_name && email && phone_number && address;
   };
 
   // Create subscription_customer entry
@@ -81,6 +98,7 @@ const SubscriptionSelection = () => {
         console.log('Subscription for customer created with ID: ', docRef.id);
         setIsSubscriptionConfirmed(true); // Mark subscription as confirmed
       } catch (error) {
+        setErrorMessage('Error creating subscription. Please try again.');
         console.error('Error creating subscription for customer: ', error);
       }
     }
@@ -88,6 +106,8 @@ const SubscriptionSelection = () => {
 
   return (
     <div className="subscription-container">
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+
       <div className="card-grid">
         {subscriptions.length > 0 ? (
           subscriptions.map((sub) => (
@@ -176,6 +196,5 @@ const SubscriptionSelection = () => {
     </div>
   );
 };
-
 
 export default SubscriptionSelection;

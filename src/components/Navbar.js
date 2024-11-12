@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="navbar-container">
         {/* Logo Section */}
         <Link to="/" className="navbar-logo">
-          <h1>Smart Eco</h1>
+          <h1>EvoraAI</h1>
         </Link>
 
         {/* Links Section */}
@@ -25,16 +25,6 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/about" className="nav-link">
-              <FaInfoCircle /> About
-            </Link>
-          </li>
-          <li>
-            <Link to="/profile" className="nav-link">
-              <FaUserCircle /> Profile
-            </Link>
-          </li>
-          <li>
             <Link to="/subscription" className="nav-link">
               <FaSignInAlt /> Subscription
             </Link>
@@ -44,10 +34,20 @@ const Navbar = () => {
               <FaRobot /> AI Assistant
             </Link>
           </li>
+          <li>
+            <Link to="/about" className="nav-link">
+              <FaInfoCircle /> About
+            </Link>
+          </li>
+          <li>
+            <Link to="/profile" className="nav-link">
+              <FaUserCircle /> Profile
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default Navbar;

@@ -1,12 +1,13 @@
+
 import React from 'react';
 import './About.css';
 
 const About = () => {
   return (
     <div className="about-container">
-      <h1 className="about-title">About Smart Eco</h1>
+      <h1 className="about-title">EvoraAI</h1>
       <p className="about-description">
-        Welcome to Smart Eco! We are committed to providing eco-friendly transportation solutions for the modern world.
+        Welcome to EvoraAI! We are committed to providing eco-friendly transportation solutions for the modern world.
         Our mission is to make sustainable vehicles accessible and promote greener lifestyles.
       </p>
       <div className="about-section">
@@ -25,8 +26,9 @@ const About = () => {
       </div>
       <div className="about-section">
         <h2>Contact Us</h2>
-        <p>Email: contact@smarteco.com</p>
-        <p>Phone: +1 234-567-890</p>
+        <p>Email: contact@goeasy.com</p>
+        <p>Phone: 9579230932</p>
+        <p>Phone: 9322915597</p>
       </div>
     </div>
   );

@@ -6,7 +6,24 @@
   text-align: center;
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   border-radius: 20px;
+  position: relative; /* Needed for positioning the error message */
 }
+
+/* Error Message */
+.error-message {
+  position: absolute;
+  top: 10px; /* Adjust position as needed */
+  right: 10px;
+  background-color: #e74c3c; /* Red background to indicate an error */
+  color: red; /* Change text color to red */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  z-index: 10; /* Ensures the message stays on top */
+  opacity: 1; /* Makes sure it's fully visible */
+}
+
 
 /* Title */
 .title {
@@ -109,6 +126,26 @@
 .subscription-card p strong {
   color: #333;
   font-weight: 600;
+}
+/* Subscription Activation Message */
+.subscription-activation-message {
+  color: #27ae60; /* Green text */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+/* Success Message */
+.success-message {
+  position: absolute;
+  top: 10px; /* Adjust position as needed */
+  right: 10px;
+  background-color: #27ae60; /* Green background */
+  color: white; /* White text for readability */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  z-index: 10;
+  opacity: 1; /* Makes sure it's fully visible */
 }
 
 /* Animation for the Card Grid */
