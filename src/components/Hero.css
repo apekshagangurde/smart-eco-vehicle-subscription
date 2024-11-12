@@ -1,0 +1,116 @@
+/* Hero Section */
+.hero {
+   background: url('https://in.images.search.yahoo.com/images/view;_ylt=AwrKFZnICDNnlQs1kty9HAx.;_ylu=c2VjA3NyBHNsawNpbWcEb2lkAzk2ZTM1OGMyNzY1YzM3MGM2M2VhMzc2Mzg3NjhkYWFiBGdwb3MDMTEEaXQDYmluZw--?back=https%3A%2F%2Fin.images.search.yahoo.com%2Fsearch%2Fimages%3Fp%3Dcar%2Bimage%2Bvaolkswagen%26ei%3DUTF-8%26type%3DE211IN714G0%26fr%3Dmcafee%26fr2%3Dp%253As%252Cv%253Ai%252Cm%253Asb-top%26tab%3Dorganic%26ri%3D11&w=3840&h=2160&imgurl=www.hdcarwallpapers.com%2Fwalls%2F2017_volkswagen_phideon_luxury_sedan-HD.jpg&rurl=https%3A%2F%2Fwww.hdcarwallpapers.com%2F2017_volkswagen_phideon_luxury_sedan-wallpapers&size=1872KB&p=car+image+vaolkswagen&oid=96e358c2765c370c63ea37638768daab&fr2=p%3As%2Cv%3Ai%2Cm%3Asb-top&fr=mcafee&tt=2017+Volkswagen+Phideon+Luxury+Sedan+Wallpaper+-+HD+Car+Wallpapers+%236372&b=0&ni=160&no=11&ts=&tab=organic&sigr=V0EK10kv4R1p&sigb=yhRpKT5rzcqI&sigi=zgWDTz78fn8L&sigt=Omvl3oChKBiy&.crumb=ES3aRPtvJgb&fr=mcafee&fr2=p%3As%2Cv%3Ai%2Cm%3Asb-top&type=E211IN714G0') no-repeat center center/cover;
+   color: white;
+   text-align: center;
+   padding: 80px 0;
+   animation: fadeIn 2s ease-in-out;
+ }
+ 
+ .hero-text h1 {
+   font-size: 3rem;
+   margin-bottom: 20px;
+   animation: slideIn 1.5s ease-out;
+ }
+ 
+ .hero-text p {
+   font-size: 1.25rem;
+   animation: fadeIn 2s ease-out;
+ }
+ 
+ .cta-button {
+   background-color: #2c3e50;
+   color: white;
+   padding: 12px 30px;
+   text-decoration: none;
+   border-radius: 5px;
+   font-size: 1.1rem;
+   transition: background-color 0.3s ease;
+ }
+ 
+ .cta-button:hover {
+   background-color: #34495e;
+ }
+ 
+ /* Animations */
+ @keyframes fadeIn {
+   0% { opacity: 0; }
+   100% { opacity: 1; }
+ }
+ 
+ @keyframes slideIn {
+   0% { transform: translateY(-50px); opacity: 0; }
+   100% { transform: translateY(0); opacity: 1; }
+ }
+ /* Features Section */
+.features {
+   display: flex;
+   justify-content: space-around;
+   padding: 50px 0;
+ }
+ 
+ .feature-card {
+   text-align: center;
+   width: 30%;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+ 
+ .feature-card:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .feature-card h2 {
+   font-size: 2rem;
+   margin-bottom: 10px;
+ }
+/* Vehicle List Section */
+.vehicle-list-section {
+   padding: 50px 0;
+   text-align: center;
+   animation: fadeInUp 1s ease-out;
+ }
+ 
+ .vehicle-list {
+   display: flex;
+   justify-content: space-around;
+   flex-wrap: wrap;
+ }
+ 
+ .vehicle-card {
+   background: white;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   border-radius: 8px;
+   width: 30%;
+   margin: 15px;
+   text-align: center;
+   padding: 20px;
+   transition: transform 0.3s ease;
+ }
+ 
+ .vehicle-card:hover {
+   transform: translateY(-5px);
+ }
+ 
+ .vehicle-image {
+   max-width: 100%;
+   height: auto;
+   border-radius: 8px;
+ }
+ 
+ @keyframes fadeInUp {
+   0% { opacity: 0; transform: translateY(50px); }
+   100% { opacity: 1; transform: translateY(0); }
+ }
+/* Parallax effect */
+.hero {
+   background-attachment: fixed;
+   background-size: cover;
+   background-position: center;
+ }
+ 
+ /* Smooth scrolling */
+ html {
+   scroll-behavior: smooth;
+ }
+   

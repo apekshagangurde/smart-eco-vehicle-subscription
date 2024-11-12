@@ -11,10 +11,9 @@ import AIAssistant from './components/AIAssistant';
 import About from './pages/About';
 import SignIn from './pages/SignIn';  // Import SignIn component
 import SignUp from './pages/SignUp';  // Import SignUp component
+import Home from './pages/Home'; 
 
-function Home() {
-  return <div>Welcome to the Home Page</div>;  
-}
+
 
 function App() {
   return (

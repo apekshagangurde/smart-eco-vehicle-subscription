@@ -1,0 +1,142 @@
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #42b2f5, #55c4e1);
+    color: white;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 2s ease-in-out;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .cta-button {
+    background-color: #ff7f50;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #ff5722;
+    transform: scale(1.1);
+  }
+  
+  /* Features Section */
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+    background-color: #f0f8ff;
+    animation: slideIn 1s ease-in-out;
+  }
+  
+  .feature-card {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .feature-icon {
+    font-size: 3rem;
+    color: #42b2f5;
+    margin-bottom: 20px;
+  }
+  
+  .feature-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .feature-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Subscription Section */
+  .subscription {
+    text-align: center;
+    padding: 40px;
+    background-color: #42b2f5;
+    color: white;
+  }
+  
+  .subscription h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .subscription p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .subscription .cta-button {
+    background-color: #ff5722;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+  
+  .subscription .cta-button:hover {
+    background-color: #ff7f50;
+    transform: scale(1.1);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
