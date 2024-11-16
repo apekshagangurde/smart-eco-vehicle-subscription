@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { firestore } from '../components/firebase/firebase'; // Import Firebase firestore
 import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';  // Make sure this is imported
+import { Timestamp } from 'firebase/firestore'; // Import Firestore Timestamp
+
 import './container.css';
 
 const SubscriptionSelection = () => {
@@ -17,6 +20,7 @@ const SubscriptionSelection = () => {
   const [customerId, setCustomerId] = useState('');
   const [isSubscriptionConfirmed, setIsSubscriptionConfirmed] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   // Fetch subscriptions from Firestore
   useEffect(() => {
@@ -53,20 +57,33 @@ const SubscriptionSelection = () => {
   // Create Customer in Firebase
   const createCustomer = async () => {
     if (validateCustomerDetails()) {
+      setIsLoading(true); // Set loading to true while making the request
       try {
-        const docRef = await addDoc(collection(firestore, 'customers'), {
-          first_name: customerDetails.first_name,
-          last_name: customerDetails.last_name,
-          email: customerDetails.email,
-          phone_number: customerDetails.phone_number,
-          address: customerDetails.address,
-        });
-        setCustomerId(docRef.id); // Store the created customer ID
-        setIsCustomerCreated(true); // Mark that customer has been created
-        setErrorMessage(''); // Clear any previous errors
+        const auth = getAuth();  // Initialize Firebase Auth
+        const user = auth.currentUser;  // Get the current logged-in user
+
+        if (user) {
+          // Use the Firebase Authentication UID as the customer_id
+          await addDoc(collection(firestore, 'customers'), {
+            customer_id: user.uid,  // Store the Firebase Authentication UID as customer_id
+            first_name: customerDetails.first_name,
+            last_name: customerDetails.last_name,
+            email: customerDetails.email,
+            phone_number: customerDetails.phone_number,
+            address: customerDetails.address,
+          });
+
+          setCustomerId(user.uid);  // Store the customer ID (Firebase UID) locally
+          setIsCustomerCreated(true); // Mark that customer has been created
+          setErrorMessage(''); // Clear any previous errors
+        } else {
+          setErrorMessage('No authenticated user found. Please log in.');
+        }
       } catch (error) {
         setErrorMessage('Error creating customer. Please try again.');
         console.error('Error creating customer: ', error);
+      } finally {
+        setIsLoading(false); // Reset loading state after the process
       }
     } else {
       setErrorMessage('Please fill all customer details.');
@@ -83,16 +100,15 @@ const SubscriptionSelection = () => {
   const createSubscriptionForCustomer = async () => {
     if (selectedSubscription && customerId && !isSubscriptionConfirmed) {
       try {
-        const startDate = new Date();
-        const endDate = new Date();
-        endDate.setFullYear(startDate.getFullYear() + 1); // Assuming 1-year subscription
+        const startDate = Timestamp.now(); // Get Firestore Timestamp for current date
+        const endDate = Timestamp.fromDate(new Date(new Date().setMonth(new Date().getMonth() + 1))); // 1 month subscription
 
         // Create the subscription_customer document
         const docRef = await addDoc(collection(firestore, 'subscriptions_customers'), {
           customer_id: customerId,
           subscription_id: selectedSubscription.id,
-          start_date: startDate.toISOString().split('T')[0], // Format YYYY-MM-DD
-          end_date: endDate.toISOString().split('T')[0], // Format YYYY-MM-DD
+          start_date: startDate, // Firestore Timestamp
+          end_date: endDate, // Firestore Timestamp
           status: 'Active',
         });
         console.log('Subscription for customer created with ID: ', docRef.id);
@@ -165,8 +181,8 @@ const SubscriptionSelection = () => {
             value={customerDetails.address}
             onChange={handleCustomerInputChange}
           />
-          <button className="submit-btn" onClick={createCustomer}>
-            Submit
+          <button className="submit-btn" onClick={createCustomer} disabled={isLoading}>
+            {isLoading ? 'Submitting...' : 'Submit'}
           </button>
         </div>
       )}
@@ -179,9 +195,9 @@ const SubscriptionSelection = () => {
           <button
             className="confirm-btn"
             onClick={createSubscriptionForCustomer}
-            disabled={isSubscriptionConfirmed} // Disable button after confirmation
+            disabled={isSubscriptionConfirmed || isLoading} // Disable button after confirmation
           >
-            Confirm Subscription
+            {isLoading ? 'Confirming...' : 'Confirm Subscription'}
           </button>
         </div>
       )}

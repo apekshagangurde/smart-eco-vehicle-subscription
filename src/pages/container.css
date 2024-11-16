@@ -1,29 +1,20 @@
 /* General Container */
-.subscription-container {
-  padding: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  border-radius: 20px;
-  position: relative; /* Needed for positioning the error message */
-}
+
 
 /* Error Message */
 .error-message {
   position: absolute;
-  top: 10px; /* Adjust position as needed */
+  top: 10px;
   right: 10px;
-  background-color: #e74c3c; /* Red background to indicate an error */
-  color: red; /* Change text color to red */
+  background-color: #e74c3c;
+  color: red;
   padding: 10px;
   border-radius: 5px;
   font-size: 1.1rem;
   font-weight: 600;
-  z-index: 10; /* Ensures the message stays on top */
-  opacity: 1; /* Makes sure it's fully visible */
+  z-index: 10;
+  opacity: 1;
 }
-
 
 /* Title */
 .title {
@@ -46,7 +37,7 @@
 
 /* Subscription Card */
 .subscription-card {
-  background-color: #fff;
+  background-color: #f4aeae;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -127,25 +118,27 @@
   color: #333;
   font-weight: 600;
 }
+
 /* Subscription Activation Message */
 .subscription-activation-message {
-  color: #27ae60; /* Green text */
+  color: #27ae60;
   font-size: 1.2rem;
   font-weight: bold;
 }
+
 /* Success Message */
 .success-message {
   position: absolute;
-  top: 10px; /* Adjust position as needed */
+  top: 10px;
   right: 10px;
-  background-color: #27ae60; /* Green background */
-  color: white; /* White text for readability */
+  
+  color: rgb(64, 213, 106);
   padding: 10px;
   border-radius: 5px;
   font-size: 1.1rem;
   font-weight: 600;
   z-index: 10;
-  opacity: 1; /* Makes sure it's fully visible */
+  opacity: 1;
 }
 
 /* Animation for the Card Grid */
@@ -156,4 +149,176 @@
   to {
     opacity: 1;
   }
+}
+
+/* Add Subscription Form Container */
+.add-subscription {
+  max-width: 600px;
+  margin: 3rem auto;
+  background: #ffffff;
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Form Title */
+.add-subscription h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Form Elements Container */
+.add-subscription form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Label Styling */
+.add-subscription form label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+/* Input Fields */
+.add-subscription form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+/* Input Focus Effect */
+.add-subscription form input:focus {
+  border-color: #3498db;
+  outline: none;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Submit Button */
+.add-subscription form button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+/* Button Hover Effect */
+.add-subscription form button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+/* Button Focus Effect */
+.add-subscription form button:focus {
+  outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-subscription {
+    padding: 1.5rem 2rem;
+  }
+
+  .add-subscription h2 {
+    font-size: 1.8rem;
+  }
+
+  .add-subscription form {
+    gap: 1rem;
+  }
+
+  .add-subscription form button {
+    font-size: 1rem;
+  }
+}
+
+/* Active Subscription Container */
+.active-subscription {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  color: #333;
+}
+
+/* Title for Active Subscription */
+.active-subscription h2 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Subscription Details */
+.active-subscription p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 8px 0;
+  color: #2c3e50;
+}
+
+/* Subscription Label */
+.active-subscription p strong {
+  color: #2c3e50;
+}
+
+/* Cancel Subscription Button */
+.cancel-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #c0392b;
+}
+
+.cancel-btn:focus {
+  outline: none;
+}
+
+/* Loading Indicator */
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #3498db;
+}
+/* container.css */
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}
+
+.info-message {
+  color: blue;
 }

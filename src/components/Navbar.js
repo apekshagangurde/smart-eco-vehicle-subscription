@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo Section */}
-        <Link to="/" className="navbar-logo">
+        <Link to="./src/images/EVORA-AI.png" className="navbar-logo">
           <h1>EvoraAI</h1>
         </Link>
 
