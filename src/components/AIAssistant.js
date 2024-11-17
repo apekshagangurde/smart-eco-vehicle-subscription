@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import './AIAssistant.css'; // Import CSS for styling
+import { FaMicrophone, FaMicrophoneSlash } from 'react-icons/fa'; // Import microphone icons
 
 const AIAssistant = () => {
   const [isListening, setIsListening] = useState(false); // Track if recognition is running
   const [speechResult, setSpeechResult] = useState(''); // Store speech recognition result
   const [response, setResponse] = useState(''); // Store AI response
   const [error, setError] = useState(''); // Track any errors
+
+  // User preferences (can be expanded with real adaptive learning later)
+  const [userPreferences] = useState({
+    favoriteMusic: ['Rock', 'Pop', 'Jazz'],
+    preferredRoutes: ['Route 1', 'Route 2'],
+  });
 
   // Memoize SpeechRecognition to avoid re-creating it on every render
   const recognition = useMemo(() => {
@@ -21,41 +28,47 @@ const AIAssistant = () => {
     let responseText = '';
     const lowerCaseCommand = command.toLowerCase();
 
-    // Example responses based on common commands
+    // Handling different commands for Co-Driver AI
     if (lowerCaseCommand.includes('hello') || lowerCaseCommand.includes('hi')) {
-      const greetings = ['Hello! How can I assist you today?', 'Hi there! What can I do for you?', 'Greetings! What’s up?'];
-      responseText = greetings[Math.floor(Math.random() * greetings.length)];
-    } 
-    else if (lowerCaseCommand.includes('weather')) {
-      const weatherResponses = [
-        'The weather is sunny and clear today.',
-        'It looks like it might rain later. Stay prepared!',
-        'The temperature is around 72°F with a light breeze.'
+      responseText = 'Hello! How can I assist you on your drive today?';
+    }
+    else if (lowerCaseCommand.includes('traffic')) {
+      // Static traffic response, could be dynamic with real data
+      const trafficResponses = [
+        'Traffic is smooth ahead, you will reach your destination in 20 minutes.',
+        'There is a traffic jam ahead, it will take around 40 minutes.',
+        'No traffic updates available at the moment, drive safe!'
       ];
-      responseText = weatherResponses[Math.floor(Math.random() * weatherResponses.length)];
-    } 
-    else if (lowerCaseCommand.includes('time')) {
-      const currentTime = new Date().toLocaleTimeString();
-      responseText = `The current time is ${currentTime}.`;
-    } 
+      responseText = trafficResponses[Math.floor(Math.random() * trafficResponses.length)];
+    }
+    else if (lowerCaseCommand.includes('route')) {
+      // Suggest preferred routes based on user preferences
+      responseText = `I suggest taking ${userPreferences.preferredRoutes[0]} for a faster drive.`;
+    }
+    else if (lowerCaseCommand.includes('music')) {
+      // Generate a playlist based on user preferences
+      const musicGenre = userPreferences.favoriteMusic[Math.floor(Math.random() * userPreferences.favoriteMusic.length)];
+      responseText = `I have selected a ${musicGenre} playlist for you. Enjoy the ride!`;
+    }
+    else if (lowerCaseCommand.includes('story')) {
+      // Provide a story or relaxation content for passengers
+      const stories = [
+        'Once upon a time, in a kingdom far away...',
+        'In a peaceful forest, animals lived harmoniously...',
+        'On a stormy night, a brave knight set out on an adventure...'
+      ];
+      responseText = stories[Math.floor(Math.random() * stories.length)];
+    }
     else if (lowerCaseCommand.includes('how are you')) {
-      const moodResponses = [
-        'I’m doing great, thanks for asking!',
-        'I’m good! Ready to assist you.',
-        'I’m always happy to help you out!'
-      ];
-      responseText = moodResponses[Math.floor(Math.random() * moodResponses.length)];
-    } 
-    else if (lowerCaseCommand.includes('what is your name')) {
-      responseText = "I am your friendly AI Assistant!";
-    } 
+      responseText = 'I’m doing great! Ready to assist you on your journey.';
+    }
     else {
-      responseText = `Sorry, I didn’t understand "${command}". Can you repeat it? Or try something else like asking the time, weather, or just say hello!`;
+      responseText = `Sorry, I didn’t understand "${command}". Can you repeat it or try something else like asking for the route, traffic updates, or entertainment options?`;
     }
 
     setResponse(responseText);
     respondToCommand(responseText);
-  }, []); // Memoize the processCommand function to avoid unnecessary re-renders
+  }, [userPreferences]); // Dependency on user preferences to adapt the system
 
   // Respond to the command using text-to-speech
   const respondToCommand = (responseText) => {
@@ -103,18 +116,24 @@ const AIAssistant = () => {
     }
   };
 
+  const toggleListening = () => {
+    if (isListening) {
+      stopListening();
+    } else {
+      startListening();
+    }
+  };
+
   return (
     <div className="container">
-      <h1 className="title">AI Assistant</h1>
+      <h1 className="title">AI Co-Driver Assistant</h1>
       <p className={`status ${isListening ? 'active' : 'inactive'}`}>
         Speech Recognition Status: {isListening ? 'Listening...' : 'Not Listening'}
       </p>
+
       <div className="button-container">
-        <button className="button start-btn" onClick={startListening} disabled={isListening}>
-          Start Listening
-        </button>
-        <button className="button stop-btn" onClick={stopListening} disabled={!isListening}>
-          Stop Listening
+        <button className="button mute-btn" onClick={toggleListening}>
+          {isListening ? <FaMicrophoneSlash size={30} /> : <FaMicrophone size={30} />}
         </button>
       </div>
 
