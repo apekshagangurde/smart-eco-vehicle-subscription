@@ -15,10 +15,21 @@
 }
 
 /* Logo Styling */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds space between the image and the text */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.navbar-logo img {
+  height: 40px; /* Adjust logo size */
+  width: auto;
+}
+
 .navbar-logo h1 {
   color: #ecf0f1;
   font-size: 28px;
-  text-decoration: none;
   margin: 0;
   transition: color 0.3s;
 }

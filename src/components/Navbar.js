@@ -2,15 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaHome, FaCar, FaInfoCircle, FaUserCircle, FaSignInAlt, FaRobot } from 'react-icons/fa';  // Import AI Assistant Icon
 import './Navbar.css'; // Optional, for additional custom styling
-
+import logo from '../images/EVORA-AI.png';
 const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo Section */}
-        <Link to="./src/images/EVORA-AI.png" className="navbar-logo">
+        <Link to="/" className="navbar-logo">
+          <img src={logo} alt="Evora AI Logo" />
           <h1>EvoraAI</h1>
         </Link>
+
 
         {/* Links Section */}
         <ul className="nav-links">
